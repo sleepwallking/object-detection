@@ -1,6 +1,6 @@
 import cv2
  
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('Video.mp4')
 cap.set(3,640)
 cap.set(4,480)
 # cap.set(10,70)
@@ -29,9 +29,9 @@ while True:
     if len(classIds)!= 0:
       for classId, confidence,box in zip(classIds.flatten(),confs.flatten(),bbox):
           cv2.rectangle(img,box,color=(255,0,0),thickness=2)
-          cv2.putText(img,classNames[classId-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(255,0,0),2)
+          cv2.putText(img,classNames[classId-1].upper(),(box[0]+10,box[1]+30),cv2.FONT_HERSHEY_COMPLEX,1,(255,0,0),1)
           cv2.putText(img,str(round(confidence*100,2)),(box[0]+200,box[1]+30),
-          cv2.FONT_HERSHEY_COMPLEX,1,(255,0,0),2)
+          cv2.FONT_HERSHEY_COMPLEX,1,(255,0,0),1)
 
     cv2.imshow('Output',img)
     cv2.waitKey(1)
